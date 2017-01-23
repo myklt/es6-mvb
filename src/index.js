@@ -1,7 +1,7 @@
 {
-    function say({ domNodeId, message }) {
+    function sayHello({ domNodeId = 'root', message: name }) {
         const domNode = document.getElementById(domNodeId);
-        domNode.innerHTML = message;
+        domNode.innerHTML = `Hello ${name}!`;
     }
-    say({ domNodeId: 'root', message: 'Hello World' });
+    sayHello({ message: 'World' });
 }
