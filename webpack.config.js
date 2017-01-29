@@ -8,6 +8,7 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
+        port: 80,
         publicPath: '/dist/'
     }
 }; 
