@@ -1,8 +1,7 @@
 const {client} = require('nightwatch-cucumber');
 const {defineSupportCode} = require('cucumber');
 
-defineSupportCode(({Given, Then, setDefaultTimeout}) => {
-    setDefaultTimeout(30 * 1000);
+defineSupportCode(({Given, Then}) => {
 
     Given(/^I open the home page$/, () => {
         return client

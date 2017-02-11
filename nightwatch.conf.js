@@ -5,6 +5,7 @@ const geckodriver = require('geckodriver');
 
 require('nightwatch-cucumber')({
     cucumberArgs: [
+        '--require', 'test/e2e/timeout.js',
         '--require', 'test/e2e/step_definitions',
         '--format', 'pretty',
         '--format', 'json:test/e2e/reports/cucumber.json',
