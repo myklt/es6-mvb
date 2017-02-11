@@ -40,6 +40,11 @@ module.exports = {
             launch_url: 'http://localhost',
             selenium_port: 4444,
             selenium_host: seleniumHost,
+            screenshots: {
+                enabled: true,
+                on_failure: true,
+                path: 'test/e2e/screenshots'
+            },
             desiredCapabilities: {
                 browserName: 'phantomjs',
                 javascriptEnabled: true,
