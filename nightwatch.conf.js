@@ -3,6 +3,8 @@ const phantomjs = require('phantomjs-prebuilt');
 const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
+const seleniumHost = '127.0.0.1';
+
 require('nightwatch-cucumber')({
     cucumberArgs: [
         '--require', 'test/e2e/timeout.js',
@@ -26,7 +28,7 @@ module.exports = {
         start_process: true,
         server_path: seleniumServer.path,
         log_path: '',
-        host: '127.0.0.1',
+        host: seleniumHost,
         port: 4444,
         cli_args: {
             'webdriver.chrome.driver': chromedriver.path,
@@ -37,7 +39,7 @@ module.exports = {
         default: {
             launch_url: 'http://localhost',
             selenium_port: 4444,
-            selenium_host: '127.0.0.1',
+            selenium_host: seleniumHost,
             desiredCapabilities: {
                 browserName: 'phantomjs',
                 javascriptEnabled: true,
