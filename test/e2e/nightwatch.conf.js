@@ -7,18 +7,18 @@ const seleniumHost = '127.0.0.1';
 
 require('nightwatch-cucumber')({
     cucumberArgs: [
-        '--require', 'test/e2e/timeout.js',
-        '--require', 'test/e2e/step_definitions',
+        '--require', 'timeout.js',
+        '--require', 'step_definitions',
         '--format', 'pretty',
-        '--format', 'json:test/e2e/reports/cucumber.json',
+        '--format', 'json:reports/cucumber.json',
         '--format-options', '{"colorsEnabled":true}',
-        'test/e2e/features'
+        'features'
     ]
 });
 
 module.exports = {
-    output_folder: 'test/e2e/reports',
-    page_objects_path: 'test/e2e/pages',
+    output_folder: 'reports',
+    page_objects_path: 'pages',
     live_output: true,
     test_workers: {
         enabled: true,
@@ -27,7 +27,7 @@ module.exports = {
     selenium: {
         start_process: true,
         server_path: seleniumServer.path,
-        log_path: 'test/e2e/logs',
+        log_path: 'logs',
         host: seleniumHost,
         port: 4444,
         cli_args: {
@@ -43,7 +43,7 @@ module.exports = {
             screenshots: {
                 enabled: true,
                 on_failure: true,
-                path: 'test/e2e/screenshots'
+                path: 'screenshots'
             },
             desiredCapabilities: {
                 browserName: 'phantomjs',
