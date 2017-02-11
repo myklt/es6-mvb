@@ -1,7 +1,13 @@
 Feature: Smoke test
 
-Scenario: Navigating to home page
+Background:
 
-	Given I open the home page
-	And the title is "ES6 Boilerplate"
-	Then the "Hello World!" text is visible
+  Given I open the home page
+
+Scenario: Page title is correct
+
+  Then the title is "ES6 Boilerplate"
+
+Scenario: Home page greets politely
+
+  Then the page should contain text "Hello World!"
