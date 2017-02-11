@@ -4,6 +4,7 @@ const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
 const seleniumHost = '127.0.0.1';
+const isDebugEnvironmet = process.env.NODE_ENV === 'debug';
 
 require('nightwatch-cucumber')({
     cucumberArgs: [
@@ -21,7 +22,8 @@ module.exports = {
     page_objects_path: 'pages',
     live_output: true,
     test_workers: {
-        enabled: true,
+        // NOTE: Debugging tests is not supported when running in parallel, since a test worker is a separate node process.
+        enabled: isDebugEnvironmet ? false : true,
         workers: 'auto'
     },
     selenium: {
