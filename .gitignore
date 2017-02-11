@@ -4,5 +4,7 @@ dist
 # Dependency directories
 node_modules
 
-# Test reports
+# E2E tests artifacts
 test/e2e/reports
+test/e2e/screenshots
+test/e2e/logs
