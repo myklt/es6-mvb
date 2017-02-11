@@ -27,7 +27,7 @@ module.exports = {
     selenium: {
         start_process: true,
         server_path: seleniumServer.path,
-        log_path: '',
+        log_path: 'test/e2e/logs',
         host: seleniumHost,
         port: 4444,
         cli_args: {

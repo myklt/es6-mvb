@@ -6,7 +6,7 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "test": "echo \"TODO: specify test\" && exit 0",
-    "test:e2e": "cross-env NODE_ENV=test ./node_modules/.bin/nightwatch -e chrome,firefox"
+    "test:e2e": "mkdirp test/e2e/logs && cross-env NODE_ENV=test ./node_modules/.bin/nightwatch -e chrome,firefox"
   },
   "repository": {
     "type": "git",
