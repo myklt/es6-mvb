@@ -1,11 +1,11 @@
 const {client} = require('nightwatch-cucumber');
 const {defineSupportCode} = require('cucumber');
 
+const homePage = client.page.home();
+
 defineSupportCode(({Given, Then}) => {
 
     Given(/^I open the home page$/, () => {
-        const homePage = client.page.home();
-
         return homePage
             .navigate()
             .waitForElementVisible('@body', 1000);
@@ -16,7 +16,6 @@ defineSupportCode(({Given, Then}) => {
     });
 
     Then(/^the page should contain text "(.*?)"$/, (text) => {
-        const homePage = client.page.home();
         return homePage.assert.containsText('@root', text);
     });
 });
