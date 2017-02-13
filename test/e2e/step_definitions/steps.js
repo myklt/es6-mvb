@@ -16,6 +16,6 @@ defineSupportCode(({Given, Then}) => {
     });
 
     Then(/^the page should contain text "(.*?)"$/, (text) => {
-        return homePage.assert.containsText('@root', text);
+        return homePage.expect.element('@root').text.to.contain(text);
     });
 });
