@@ -6,7 +6,8 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "test": "echo \"TODO: specify test\" && exit 0",
-    "test:e2e": "cd test/e2e && mkdirp logs && cross-env NODE_ENV=test ../../node_modules/.bin/nightwatch -e chrome,firefox",
+    "pretest:e2e": "npm run test:e2e-clean && mkdirp test/e2e/logs",
+    "test:e2e": "cd test/e2e && cross-env NODE_ENV=test node runner.js --env chrome,firefox,default",
     "test:e2e-clean": "rimraf test/e2e/reports && rimraf test/e2e/logs && rimraf test/e2e/screenshots"
   },
   "repository": {
@@ -26,9 +27,11 @@
     "chromedriver": "^2.27.2",
     "cross-env": "^3.1.4",
     "cucumber": "^2.0.0-rc.7",
+    "cucumber-html-reporter": "^0.3.7",
     "geckodriver": "^1.4.0",
+    "minimist": "^1.2.0",
     "nightwatch": "^0.9.12",
-    "nightwatch-cucumber": "^7.0.8",
+    "nightwatch-cucumber": "^7.0.9",
     "phantomjs-prebuilt": "^2.1.14",
     "rimraf": "^2.5.4",
     "selenium-server": "^3.0.1",
