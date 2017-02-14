@@ -3,28 +3,36 @@ const phantomjs = require('phantomjs-prebuilt');
 const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
+const seleniumHost = '127.0.0.1';
+const isDebugEnvironmet = process.env.NODE_ENV === 'debug';
+
 require('nightwatch-cucumber')({
     cucumberArgs: [
-        '--require', 'test/e2e/step_definitions',
+        '--require', 'timeout.js',
+        '--require', 'hooks/hooks.js',
+        '--require', 'steps',
         '--format', 'pretty',
-        '--format', 'json:test/e2e/reports/cucumber.json',
+        '--format', 'json:reports/cucumber.json',
         '--format-options', '{"colorsEnabled":true}',
-        'test/e2e/features'
+        'features'
     ]
 });
 
 module.exports = {
-    output_folder: 'test/e2e/reports',
+    output_folder: 'reports',
+    page_objects_path: 'pages',
+    globals_path: 'globals.js',
     live_output: true,
     test_workers: {
-        enabled: true,
+        // NOTE: Debugging tests is not supported when running in parallel, since a test worker is a separate node process.
+        enabled: isDebugEnvironmet ? false : true,
         workers: 'auto'
     },
     selenium: {
         start_process: true,
         server_path: seleniumServer.path,
-        log_path: '',
-        host: '127.0.0.1',
+        log_path: 'logs',
+        host: seleniumHost,
         port: 4444,
         cli_args: {
             'webdriver.chrome.driver': chromedriver.path,
@@ -35,7 +43,12 @@ module.exports = {
         default: {
             launch_url: 'http://localhost',
             selenium_port: 4444,
-            selenium_host: '127.0.0.1',
+            selenium_host: seleniumHost,
+            screenshots: {
+                enabled: true,
+                on_failure: true,
+                path: 'screenshots'
+            },
             desiredCapabilities: {
                 browserName: 'phantomjs',
                 javascriptEnabled: true,
