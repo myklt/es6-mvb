@@ -9,7 +9,7 @@ const isDebugEnvironmet = process.env.NODE_ENV === 'debug';
 require('nightwatch-cucumber')({
     cucumberArgs: [
         '--require', 'timeout.js',
-        '--require', 'step_definitions',
+        '--require', 'steps',
         '--format', 'pretty',
         '--format', 'json:reports/cucumber.json',
         '--format-options', '{"colorsEnabled":true}',
