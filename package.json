@@ -7,7 +7,7 @@
     "build": "webpack",
     "test": "echo \"TODO: specify test\" && exit 0",
     "pretest:e2e": "npm run test:e2e-clean && mkdirp test/e2e/logs",
-    "test:e2e": "cd test/e2e && cross-env NODE_ENV=test node runner.js --env chrome,firefox,default",
+    "test:e2e": "cd test/e2e && cross-env NODE_ENV=test node runner.js --env chrome,firefox",
     "test:e2e-clean": "rimraf test/e2e/reports && rimraf test/e2e/logs && rimraf test/e2e/screenshots"
   },
   "repository": {
