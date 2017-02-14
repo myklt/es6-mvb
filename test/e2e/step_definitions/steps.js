@@ -8,7 +8,7 @@ defineSupportCode(({Given, Then}) => {
     Given(/^I open the home page$/, () => {
         return homePage
             .navigate()
-            .waitForElementVisible('@body', 1000);
+            .waitForElementVisible('@body');
     });
 
     Then(/^the title is "(.*?)"$/, (text) => {

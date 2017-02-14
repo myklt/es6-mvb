@@ -20,6 +20,7 @@ require('nightwatch-cucumber')({
 module.exports = {
     output_folder: 'reports',
     page_objects_path: 'pages',
+    globals_path: 'globals.js',
     live_output: true,
     test_workers: {
         // NOTE: Debugging tests is not supported when running in parallel, since a test worker is a separate node process.
